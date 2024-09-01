@@ -5,6 +5,14 @@
     - docker<7.0
     - docker-compose
 
+- name: Get Docker GID
+  command: getent group docker
+  register: docker_group
+
+- name: Set Docker GID fact
+  set_fact:
+    docker_gid: "{{ docker_group.stdout.split(':')[2] }}"
+    
 - name: Git checkout
   git:
     repo: "{{ git_repository }}"

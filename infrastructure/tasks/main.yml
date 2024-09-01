@@ -24,3 +24,5 @@
     project_src: "{{ deployment_path }}"
     build: yes
     debug: yes
+  environment:
+    DOCKER_GID: "{{ docker_gid }}"
